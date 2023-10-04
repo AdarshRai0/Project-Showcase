@@ -17,7 +17,8 @@ body {
   justify-content: center;
   width: 100%;
   min-height: 130vh;
-  background-color: #202020;
+  background-image: url(/images/download.svg);
+  background-color: #333;
 }
 
 .cards {
@@ -87,6 +88,7 @@ body {
 #main1 {
   width: 100%;
   min-height: 100vh;
+  background-image: url(/images/download.svg);
 }
 .part-1 {
   display: flex;
@@ -95,6 +97,7 @@ body {
   width: 100%;
   height: 70vh;
   background-color: #f8faff;
+  background-image: url(/images/download.svg);
 }
 
 .content {
@@ -200,15 +203,16 @@ body {
 
 #main3 {
   width: 100%;
-  min-height: 100vh;
+  min-height: 30vh;
   overflow: hidden;
+  background-image: url(/images/download.svg);
   background-color: #333;
 }
 
 .part2 {
   margin: 5vw 0;
   width: 100%;
-  height: 100vh;
+  height: 30vh;
 }
 
 .part2 .strip:nth-child(2n) {
@@ -220,10 +224,228 @@ body {
 }
 .part2 h1 {
   color: #fff;
-  font-size: 11vw;
-  line-height: 21vh;
+  font-size: 3vw;
+  line-height: 7vh;
 }
 .part2 span {
   -webkit-text-stroke: 1px #fff;
   color: transparent;
+}
+
+/* main4          */
+
+#main4 {
+  width: 100%;
+  height: 100%;
+  background-image: url(/images/download.svg);
+  background-color: #333;
+  z-index: 10;
+}
+.page__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 2rem 1.9rem;
+  overflow: hidden;
+}
+
+.page__container .page2,
+.page__container .page1,
+.page__container .page3,
+.page__container .page4,
+.page__container .page5,
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all ease 0.5s;
+}
+.img-div {
+  transition: all ease 0.5s;
+  overflow: hidden;
+}
+.page1 img:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+.page2 img:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+.page3 img:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+.page4 img:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+.page5 img:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+.img-div:hover {
+  border-radius: 1rem;
+}
+.content_div {
+  padding: 2rem 0;
+}
+.content_div h2 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 0.7rem;
+}
+.content_div p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+@media (min-width: 60em) {
+  .page__container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    background-color: #111111;
+    background-image: url(/images/download.svg);
+    gap: 4rem;
+    row-gap: 2.5rem;
+    padding: 7rem;
+    overflow: hidden;
+  }
+  .page1 {
+    grid-column: span 12 / span 12;
+  }
+  .page2 {
+    grid-column: span 7 / span 7;
+    padding-top: 2rem;
+  }
+  .page3 {
+    grid-column: span 5 / span 5;
+  }
+
+  .page4 {
+    grid-column: span 8 / span 8;
+  }
+  .page5 {
+    grid-column: span 4 / span 4;
+  }
+  .content_div h2 {
+    font-size: 3rem;
+    color: #fff;
+  }
+  .content_div p {
+    font-size: 1rem;
+    color: #fff;
+  }
+  .page3 {
+    padding-top: 5rem;
+  }
+  .page4 {
+    padding-top: 5rem;
+  }
+  .content_div {
+    padding: 3rem 0;
+  }
+}
+
+/* Grid-related CSS */
+
+:root {
+  --square-size: 15px;
+  --square-gap: 3px;
+  --week-width: calc(var(--square-size) + var(--square-gap));
+}
+
+.months {
+  grid-area: months;
+}
+.days {
+  grid-area: days;
+}
+.squares {
+  grid-area: squares;
+}
+
+.graph {
+  display: inline-grid;
+  grid-template-areas:
+    "empty months"
+    "days squares";
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+}
+
+.months {
+  display: grid;
+  grid-template-columns:
+    calc(var(--week-width) * 4) /* Jan */
+    calc(var(--week-width) * 4) /* Feb */
+    calc(var(--week-width) * 4) /* Mar */
+    calc(var(--week-width) * 5) /* Apr */
+    calc(var(--week-width) * 4) /* May */
+    calc(var(--week-width) * 4) /* Jun */
+    calc(var(--week-width) * 5) /* Jul */
+    calc(var(--week-width) * 4) /* Aug */
+    calc(var(--week-width) * 4) /* Sep */
+    calc(var(--week-width) * 5) /* Oct */
+    calc(var(--week-width) * 4) /* Nov */
+    calc(var(--week-width) * 5) /* Dec */;
+}
+
+.days,
+.squares {
+  display: grid;
+  grid-gap: var(--square-gap);
+  grid-template-rows: repeat(7, var(--square-size));
+}
+
+.squares {
+  grid-auto-flow: column;
+  grid-auto-columns: var(--square-size);
+}
+
+/* Other styling */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 12px;
+}
+.graph .months li,
+.graph .days li,
+.graph .squares li {
+  text-decoration: none;
+  list-style: none;
+  color: #fff;
+}
+
+.graph {
+  padding: 30px;
+  /* border: 1px #e1e4e8 solid; */
+  margin: 30px;
+}
+
+.days li:nth-child(odd) {
+  visibility: hidden;
+}
+
+.squares li {
+  background-color: #161b22;
+  border-radius: 3px;
+  border: 1px solid #343434;
+  text-decoration: none;
+}
+
+.squares li[data-level="1"] {
+  background-color: #006d32;
+  text-decoration: none;
+}
+
+.squares li[data-level="2"] {
+  background-color: #26a641;
+  text-decoration: none;
+}
+
+.squares li[data-level="3"] {
+  background-color: #39d353;
+  text-decoration: none;
 }
